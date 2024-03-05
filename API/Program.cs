@@ -10,10 +10,8 @@ builder.Services.AddDbContext<DataContext>(options =>{
 builder.Services.AddCors();
 var app = builder.Build();
 
-app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200"));
-app.UseHttpsRedirection();
+app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200"));
 
-app.UseAuthorization();
 
 app.MapControllers();
 
