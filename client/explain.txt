@@ -1,3 +1,8 @@
-  . OnInit : is a lifecycle hook in Angular. It is called after the constuctor excuted and the component's input properties have been initialized. OnInit if often used to perform additional initialization takss for the component.
+  . OnInit : is a lifecycle hook in Angular. It is called after the constructor excuted and the component's input properties have been initialized. OnInit if often used to perform additional initialization takss for the component.
  . HttpClientModule : is a service module provided by Angular to make Http requests and easily handle those requests and reponses.
-    . SymmetricSecurityKey : được sử dụng để mã hóa và giải mã dữ liệu bằng khóa đối xứng
+    . SymmetricSecurityKey : được sử dụng để mã hóa và giải mã dữ liệu bằng khóa đối xứng.
+    . Trình từ của lifecycle hook trong một component : constructor -> ngOnChanges -> ngOnInit 
+        -> ngDoCheck :
+                 -> ngAfterContentInit -> ngAfterContentChecked ->  ngAfterViewInit -> ngAfterViewCheckek
+        -> ngOnDestroy
+    . Template variable (biến mẫu) : references to HTML components or directives in template's component
