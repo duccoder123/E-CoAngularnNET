@@ -20,21 +20,33 @@ namespace API.Controllers
             _db= db;
             _token = token;
         }
+        // [HttpPost]
+        // public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto){
+        //     if(await UserExist(registerDto.UserName)) return BadRequest("Username is taken");
+        //     using var hmac = new HMACSHA512();
+        //     var user = new AppUser{
+        //         UserName = registerDto.UserName.ToLower(),
+        //         PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+        //         PasswordSalt = hmac.Key
+        //     };
+        //     _db.AppUsers.Add(user);
+        //     await _db.SaveChangesAsync();
+        //     return new UserDto{
+        //         Username = user.UserName,
+        //         Token = _token.CreateToken(user)
+        //     };
+        // }
         [HttpPost]
-        public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto){
-            if(await UserExist(registerDto.UserName)) return BadRequest("Username is taken");
-            using var hmac = new HMACSHA512();
-            var user = new AppUser{
-                UserName = registerDto.UserName.ToLower(),
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDto.Password)),
+        public async Task<ActionResult<AppUser>> Register(string username, string password){
+           using var hmac = new HMACSHA512();
+           var user = new AppUser{
+                UserName = username,
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password)),
                 PasswordSalt = hmac.Key
-            };
-            _db.AppUsers.Add(user);
-            await _db.SaveChangesAsync();
-            return new UserDto{
-                Username = user.UserName,
-                Token = _token.CreateToken(user)
-            };
+           };
+           _db.AppUsers.Add(user);
+           await _db.SaveChangesAsync();
+           return user;
         }
 
         [HttpPost("login")]

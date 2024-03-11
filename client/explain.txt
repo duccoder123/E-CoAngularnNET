@@ -6,3 +6,7 @@
                  -> ngAfterContentInit -> ngAfterContentChecked ->  ngAfterViewInit -> ngAfterViewCheckek
         -> ngOnDestroy
     . Template variable (biến mẫu) : references to HTML components or directives in template's component
+    . Observables : -> là khái niệm trong lập trình, đại diện cho một chuỗi các giá trị được phát ra theo thời gian.
+                              -> giúp quản lý dữ liệu không đồng bộ.
+
+    . pipe() : 

@@ -5,25 +5,27 @@
     <a href="#" class="navbar-brand">NaWa</a>
 
     <div class="collapse navbar-collapse" id="navbarCollapse">
-      <ul class="navbar-nav me-auto mb-2 mb md-0 pt-2" *ngIf="loggedIn">
+      <ul
+        class="navbar-nav me-auto mb-2 mb md-0"
+        *ngIf="accountService.currentUserSource$ | async"
+      >
         <li class="nav-item">
-          <a href="" class="nav-link" aria-current="page">Matches</a>
+          <a href="" class="nav-link">Matches</a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link" aria-current="page">Lists</a>
+          <a href="" class="nav-link">Lists</a>
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link" aria-current="page">Messages</a>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-link" aria-current="page" (click)="logout()"
-            >Logout</a
-          >
+          <a href="" class="nav-link">Messages</a>
         </li>
       </ul>
-      <div class="dropdown" *ngIf="loggedIn" dropdown>
+      <div
+        class="dropdown"
+        *ngIf="accountService.currentUserSource$ | async"
+        dropdown
+      >
         <a
-          class="dropdown-toggler text-light text-decoration-none"
+          class="dropdown-toggle text-light text-decoration-none"
           dropdownToggle
           >Welcome user</a
         >
@@ -33,6 +35,7 @@
         </div>
       </div>
       <form
+        *ngIf="!(accountService.currentUserSource$ | async)"
         #loginForm="ngForm"
         class="d-flex"
         (ngSubmit)="login()"
