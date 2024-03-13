@@ -2,31 +2,38 @@
   class="navbar navbar-expand-md navbar-ligth shadow-sm fixed-top bg-light text-dark"
 >
   <div class="container-md">
-    <a href="#" class="navbar-brand">NaWa</a>
+    <a routerLink="/" class="navbar-brand">NaWa</a>
 
-    <div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="collapse navbar-collapse mt-2" id="navbarCollapse">
       <ul
         class="navbar-nav me-auto mb-2 mb md-0"
-        *ngIf="accountService.currentUserSource$ | async"
+        *ngIf="accountService.currentUser$ | async"
       >
         <li class="nav-item">
-          <a href="" class="nav-link">Matches</a>
+          <a routerLink="/members" class="nav-link" routerLinkActive="active"
+            >Matches</a
+          >
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link">Lists</a>
+          <a routerLink="/lists" class="nav-link" routerLinkActive="active"
+            >Lists</a
+          >
         </li>
         <li class="nav-item">
-          <a href="" class="nav-link">Messages</a>
+          <a routerLink="/messages" class="nav-link" routerLinkActive="active"
+            >Messages</a
+          >
         </li>
       </ul>
       <div
         class="dropdown"
-        *ngIf="accountService.currentUserSource$ | async"
+        *ngIf="accountService.currentUser$ | async"
         dropdown
       >
         <a
-          class="dropdown-toggle text-light text-decoration-none"
+          class="dropdown-toggle text-dark text-decoration-none"
           dropdownToggle
+          style="cursor: pointer"
           >Welcome user</a
         >
         <div class="dropdown-menu" *dropdownMenu>
@@ -35,7 +42,7 @@
         </div>
       </div>
       <form
-        *ngIf="!(accountService.currentUserSource$ | async)"
+        *ngIf="!(accountService.currentUser$ | async)"
         #loginForm="ngForm"
         class="d-flex"
         (ngSubmit)="login()"

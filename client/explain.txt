@@ -10,3 +10,5 @@
                               -> giúp quản lý dữ liệu không đồng bộ.
 
     . pipe() : 
+    . routerLinkAcitve : là một directive được srw dụng để thêm class vào element khi router được kích hoạt. Dễ dàng hiển thị trạng thái 
+    .guardRouter : để xử lý các tác vụ về router như việc chỉ định việc một số page cho phép anonymous truy cập, user login vào các hệ thống 

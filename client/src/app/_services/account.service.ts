@@ -8,7 +8,7 @@ import { User } from '../_model/user';
 export class AccountService {
   baseUrl = 'http://localhost:5001/api/';
   private currentUserSource = new BehaviorSubject<User | any>(null);
-  currentUserSource$ = this.currentUserSource.asObservable();
+  currentUser$ = this.currentUserSource.asObservable();
   constructor(private http: HttpClient) {}
   login(model: any) {
     return this.http.post<User>(this.baseUrl + 'account/login', model).pipe(
@@ -21,6 +21,17 @@ export class AccountService {
       })
     );
   }
+  register(model: any) {
+    return this.http.post<User>(this.baseUrl + 'account/register', model).pipe(
+      map((user) => {
+        if (user) {
+          localStorage.setItem('user', JSON.stringify(user));
+          this.currentUserSource.next(user);
+        }
+      })
+    );
+  }
+
   setCurrentUser(user: User) {
     this.currentUserSource.next(user);
   }
