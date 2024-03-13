@@ -27,14 +27,14 @@
       </ul>
       <div
         class="dropdown"
-        *ngIf="accountService.currentUser$ | async"
+        *ngIf="accountService.currentUser$ | async as user"
         dropdown
       >
         <a
           class="dropdown-toggle text-dark text-decoration-none"
           dropdownToggle
           style="cursor: pointer"
-          >Welcome user</a
+          >Welcome {{ user.username | titlecase }}</a
         >
         <div class="dropdown-menu" *dropdownMenu>
           <a class="dropdown-item">Edit profile</a>

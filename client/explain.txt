@@ -11,4 +11,5 @@
 
     . pipe() : 
     . routerLinkAcitve : là một directive được srw dụng để thêm class vào element khi router được kích hoạt. Dễ dàng hiển thị trạng thái 
-    .guardRouter : để xử lý các tác vụ về router như việc chỉ định việc một số page cho phép anonymous truy cập, user login vào các hệ thống 
+    .guardRouter : để xử lý các tác vụ về router như việc chỉ định việc một số page cho phép anonymous truy cập, user login vào các hệ thống .
+    . dummyRoute : là kỹ thuật được sử dụng để chuyển hướng người dùng đến một page khác dựa trên một số điều kiện nhất định
