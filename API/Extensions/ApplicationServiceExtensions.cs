@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using API.Data;
+using API.Data.Repository;
 using API.Interfaces;
+using API.Interfaces.IRepository;
 using API.Services;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,6 +20,9 @@ namespace API.Extensions
             });
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            
             return services;
         }
     }
